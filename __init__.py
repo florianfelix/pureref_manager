@@ -16,8 +16,8 @@ bl_info = {
     "author" : "florianfelix",
     "description" : "Open PureRef File when opening a blender file",
     "blender" : (2, 83, 0),
-    "version" : (0, 0, 1),
-    "location" : "Properties > Scene > PureRef Management",
+    "version" : (0, 0, 2),
+    "location" : "N-Panle > View > PureRef",
     "warning" : "",
     "category" : "Interface"
 }
