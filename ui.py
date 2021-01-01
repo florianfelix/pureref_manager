@@ -17,16 +17,21 @@ class VIEW3D_PT_pureref_manager(Panel):
         scene = context.scene
         settings = scene.pureref_scene_settings
 
-        col = layout.column()
-
         preferences = context.preferences
         addon_prefs = preferences.addons[__package__].preferences
         pureref_executable = addon_prefs.pureref_executable
 
-        if not pureref_executable:
-            col.label(text='PureRef executable not set', icon='ERROR')
-            col.label(text='Set in Addon Preferences', icon='ERROR')
+        active = True
 
+        if not pureref_executable:
+            active = False
+            box = layout.box()
+            box.label(text='PureRef executable not set', icon='ERROR')
+            box.label(text='Set in Addon Preferences', icon='ERROR')
+            box.operator('scene.show_preferences')
+
+        col = layout.column()
+        col.enabled = active
         col.operator('scene.open_pureref')
-        col.prop(settings, 'load_on_load')
+        col.prop(settings, 'open_on_load')
         col.prop(settings, 'pureref_file')

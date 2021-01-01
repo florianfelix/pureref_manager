@@ -7,7 +7,9 @@ from bpy.app.handlers import persistent
 
 @persistent
 def pureref_load_handler(dummy):
-    pureref_open()
+    execute_on_load = bpy.context.scene.pureref_scene_settings.open_on_load
+    if execute_on_load:
+        pureref_open()
 
 
 def pureref_open():
@@ -28,7 +30,8 @@ def pureref_open():
                            for f in os.listdir(folder) if f.endswith(".pur")])
 
         if purerefs:
-            open_pureref_file(purerefs[-1])
+            filepath = purerefs[-1]
+            open_pureref_file(filepath)
         else:
             print('PureRef: No PureRef Files found in project directory')
 
