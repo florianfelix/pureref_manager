@@ -2,18 +2,12 @@
 from bpy.types import Panel
 
 
-class SCENE_PT_pureref_management(Panel):
-    bl_space_type = 'PROPERTIES'
-    bl_region_type = 'WINDOW'
-    bl_context = "scene"
-
-    bl_label = "PureRef Management"
+class VIEW3D_PT_pureref_manager(Panel):
+    bl_space_type = 'VIEW_3D'
+    bl_region_type = 'UI'
+    bl_category = "View"
+    bl_label = "PureRef"
     bl_options = {'DEFAULT_CLOSED'}
-    bl_order = 110
-
-    @classmethod
-    def poll(cls, context):
-        return True
 
     def draw(self, context):
         layout = self.layout
@@ -30,7 +24,8 @@ class SCENE_PT_pureref_management(Panel):
         pureref_executable = addon_prefs.pureref_executable
 
         if not pureref_executable:
-            col.label(text='PureRef executable not set in Addon Preferences', icon='ERROR')
+            col.label(text='PureRef executable not set', icon='ERROR')
+            col.label(text='Set in Addon Preferences', icon='ERROR')
 
         col.operator('scene.open_pureref')
         col.prop(settings, 'load_on_load')

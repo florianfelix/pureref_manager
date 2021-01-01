@@ -20,7 +20,7 @@ def pureref_open():
     # Else try finding PureRef File in Project directory
     else:
         if not bpy.data.filepath:
-            print("File not saved. Nowhere to look.")
+            # print("PureRef: File not saved. Nowhere to look.")
             return
 
         folder = os.path.dirname(bpy.data.filepath)
@@ -30,7 +30,7 @@ def pureref_open():
         if purerefs:
             open_pureref_file(purerefs[-1])
         else:
-            print('No PureRef Files found in project directory')
+            print('PureRef: No PureRef Files found in project directory')
 
 
 def open_pureref_file(path):
@@ -39,12 +39,12 @@ def open_pureref_file(path):
 
     # Check if executable is set
     if not pureref_executable:
-        print("PureRef Executable not set in Addon Preferences, Doing nothing.")
+        print("PureRef: Executable not set in Addon Preferences, Doing nothing.")
         return
 
     # Check if file exists and is pureref file
     if not os.path.exists(path) or not os.path.basename(path).endswith('.pur'):
-        print(path, 'not found')
+        print('PureRef: ', path, 'not found')
         return
 
     # Open pureref with file
