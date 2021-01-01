@@ -21,3 +21,5 @@ clone the repo into your user-addons-dir
 
 or download the latest zip from the <a href="https://github.com/florianfelix/pureref_manager/releases">releases</a> and install normally.
 
+## Importantly
+you have to provide the path to your PureRef executable in the addon preferences.
